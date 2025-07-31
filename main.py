@@ -9,6 +9,7 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 
 player = Player()
+scoreboard = Scoreboard()
 screen.listen()
 screen.onkeypress(player.move, "Up")
 
@@ -16,4 +17,6 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    player.restart_pos()
+
+    if player.restart_pos():
+        scoreboard.increase_score()
